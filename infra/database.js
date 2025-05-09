@@ -1,4 +1,8 @@
 import { Client } from "pg";
+import postgres from "postgres";
+
+const connectionString = process.env.DATABASE_URL;
+const sql = postgres(connectionString);
 
 async function query(queryObject) {
   const client = new Client({
@@ -30,5 +34,6 @@ async function query(queryObject) {
 }
 
 export default {
+  sql,
   query: query,
 };
